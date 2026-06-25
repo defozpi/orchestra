@@ -14,6 +14,10 @@ It is intentionally **framework-free**: the agent loop, the MCP host, the
 retrieval pipeline, and the approval gate are written by hand so the moving parts
 are visible — which is the whole point of a portfolio piece.
 
+![orchestra web UI showing the agent's live tool-call trace, the retrieved sources with similarity scores, and the grounded answer](docs/screenshot.png)
+
+*The web UI streaming the agent's reasoning: the live tool-call trace, the retrieved knowledge-base sources with similarity scores, and the final grounded answer.*
+
 ---
 
 ## What it demonstrates
