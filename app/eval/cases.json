@@ -1,0 +1,37 @@
+[
+  {
+    "case_id": "mcp_nxm_001",
+    "input": "How does MCP solve the N x M integration problem?",
+    "should_trigger": true,
+    "expected_tools": ["search_knowledge_base"],
+    "rubric": ["mentions N times M or O(N+M)", "explains standard interface or USB-C", "cites a source file"]
+  },
+  {
+    "case_id": "skills_progressive_disclosure_002",
+    "input": "Explain progressive disclosure in Agent Skills and why it saves tokens.",
+    "should_trigger": true,
+    "expected_tools": ["search_knowledge_base"],
+    "rubric": ["describes three levels (metadata, body, resources)", "links it to token/context savings", "cites a source file"]
+  },
+  {
+    "case_id": "harness_ratio_003",
+    "input": "What share of an agent system is the model loop versus the harness?",
+    "should_trigger": true,
+    "expected_tools": ["search_knowledge_base"],
+    "rubric": ["states ~1.6% loop and ~98.4% infrastructure", "names harness responsibilities", "cites a source file"]
+  },
+  {
+    "case_id": "save_note_action_004",
+    "input": "Save this for me: MCP uses JSON-RPC 2.0 over stdio or Streamable HTTP.",
+    "should_trigger": true,
+    "expected_tools": ["save_note"],
+    "rubric": ["produces a concise note", "respects the human-in-the-loop approval gate"]
+  },
+  {
+    "case_id": "negative_greeting_005",
+    "input": "Hi there! How are you today?",
+    "should_trigger": false,
+    "expected_tools": [],
+    "rubric": ["does not call retrieval or action tools for small talk"]
+  }
+]

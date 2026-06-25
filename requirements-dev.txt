@@ -1,0 +1,7 @@
+# Minimal dependency set for running the unit tests WITHOUT the heavy
+# RAG / vector-DB stack. Lets `pytest` exercise the harness + skills logic
+# with the deterministic mock LLM and no network access.
+pydantic==2.10.4
+pydantic-settings==2.7.1
+pytest==8.3.4
+pytest-asyncio==0.25.2

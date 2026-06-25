@@ -1,0 +1,44 @@
+# orchestra — one command to run the whole agent stack.
+#
+#   docker compose up --build           # api + qdrant (Claude or mock LLM)
+#   docker compose --profile local up    # also start a local Ollama model
+#
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.12.4
+    restart: unless-stopped
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  api:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - path: .env
+        required: false   # runs without a .env (falls back to the mock LLM)
+    environment:
+      # Container-network defaults (override the localhost values in .env).
+      QDRANT_URL: http://qdrant:6333
+      OLLAMA_BASE_URL: http://ollama:11434
+    depends_on:
+      - qdrant
+    volumes:
+      - ./data:/app/data        # persisted notes written by the save_note action
+
+  # Optional fully-local LLM. Enable with: docker compose --profile local up
+  ollama:
+    image: ollama/ollama:latest
+    profiles: ["local"]
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+volumes:
+  qdrant_data:
+  ollama_data:

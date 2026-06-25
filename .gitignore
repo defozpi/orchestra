@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# Local secrets & runtime data
+.env
+data/*
+!data/.gitkeep
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
